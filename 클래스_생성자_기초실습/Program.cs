@@ -6,18 +6,32 @@
 Main 함수에서 트레이너 인스턴스 생성 시, 트레이너의 이름을 초기화 해야 한다.*/
     internal class Program
     {
-        class Trainer //객체지향 설명 테크톡 객체지향 설명, 예시
+        public class Trainer 
         {
             public string name;
-            Monster[] monsters = new Monster[6];
+            public Monster[] monsters = new Monster[6];
 
             public Trainer(string name)
             {
                 this.name = name;
             }
+
+            public void GetMonster(Monster monster)
+            {
+                for (int i = 0; i < monsters.Length; i++)
+                {
+                    if (monsters[i] == null)
+                    {
+                        monsters[i] = monster;
+                        Console.WriteLine($"{monster.monsterName}를 잡았습니다. 체력은 {monster.monsterHp}입니다.");
+                        return;
+                    }
+                }
+                Console.WriteLine("가질 수 있는 몬스터의 갯수는 6마리 입니다.");
+            }
         }
 
-        class Monster
+        public class Monster
         {
             public int monsterHp;
             public string monsterName;
@@ -33,6 +47,17 @@ Main 함수에서 트레이너 인스턴스 생성 시, 트레이너의 이름�
         {
             Trainer trainer = new Trainer("이시연");
             Monster 피카츄 = new Monster(1000, "피카츄");
+            Monster 파이리 = new Monster(700, "파이리");
+
+            trainer.GetMonster(피카츄);
+            trainer.GetMonster(파이리);
+            trainer.GetMonster(파이리);
+            trainer.GetMonster(파이리);
+            trainer.GetMonster(파이리);
+            trainer.GetMonster(파이리);
+            trainer.GetMonster(파이리);
+            trainer.GetMonster(파이리);
+
         }
     }
 }
